@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #050810;
+  --bg-secondary: #0d1117;
+  --bg-card: #0f1520;
+  --bg-elevated: #141d2c;
+  --border-subtle: rgba(255, 193, 7, 0.1);
+  --border-active: rgba(255, 193, 7, 0.4);
+  --solar-primary: #ffc107;
+  --solar-bright: #ffecb3;
+  --solar-dim: #ff8f00;
+  --text-primary: #f0f4ff;
+  --text-secondary: #8892a4;
+  --text-muted: #4a5568;
+  --accent-cyan: #00e5ff;
+  --accent-green: #00e676;
+  --accent-red: #ff1744;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: rgba(255,193,7,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,193,7,0.6); }
+
+.solar-glow { box-shadow: 0 0 20px rgba(255,193,7,0.2), 0 0 40px rgba(255,193,7,0.1); }
+.solar-glow-strong { box-shadow: 0 0 30px rgba(255,193,7,0.4), 0 0 60px rgba(255,193,7,0.2); }
+.text-solar-glow { text-shadow: 0 0 20px rgba(255,193,7,0.6); }
+
+.card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; }
+.card-elevated { background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: 12px; }
+
+.grid-bg {
+  background-image: linear-gradient(rgba(255,193,7,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,193,7,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffc107, #ff6f00);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.gradient-text-cool {
+  background: linear-gradient(135deg, #00e5ff, #5c6bc0);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.leaflet-container { background: #0d1117 !important; font-family: 'DM Sans', sans-serif !important; }
+.leaflet-control-zoom { border: 1px solid rgba(255,193,7,0.3) !important; border-radius: 8px !important; overflow: hidden; }
+.leaflet-control-zoom a { background: #0f1520 !important; color: #ffc107 !important; border-color: rgba(255,193,7,0.2) !important; }
+.leaflet-control-zoom a:hover { background: #1a237e !important; }
+.leaflet-draw-toolbar a { background-color: #0f1520 !important; border-color: rgba(255,193,7,0.3) !important; color: #ffc107 !important; }
+
+@keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-count { animation: countUp 0.5s ease forwards; }
+
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.status-dot.active { background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); animation: pulse 2s infinite; }
+
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.shimmer {
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-elevated) 50%, var(--bg-card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.panel-cell {
+  background: linear-gradient(135deg, #1a237e, #0d47a1);
+  border: 1px solid rgba(0,229,255,0.3);
+  border-radius: 2px; position: relative;
+}
+.panel-cell::after {
+  content: ''; position: absolute; inset: 2px;
+  background: linear-gradient(135deg, transparent 40%, rgba(0,229,255,0.15) 100%);
+  border-radius: 1px;
+}
+
+.input-solar {
+  background: var(--bg-secondary); border: 1px solid var(--border-subtle);
+  color: var(--text-primary); border-radius: 8px; padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif; transition: all 0.2s; width: 100%;
+}
+.input-solar:focus { outline: none; border-color: var(--solar-primary); box-shadow: 0 0 0 3px rgba(255,193,7,0.1); }
